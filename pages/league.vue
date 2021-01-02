@@ -1,23 +1,57 @@
 <template>
-  <v-container class="grey lighten-5" style="text-align: center; font-size: 30px">
+  <v-container class="grey lighten-5" style="text-align: center; font-size: 20px">
     <v-row
       no-gutters
       >
       <v-col
-        v-for="f in firstLine"
-        :key="f"
+        v-for="p in playerName"
+        :key="p"
         >
         <v-card
           class="pa-2"
           outlined
           tile
-          height="75"
           >
-          <p>{{ f }}</p>
+          <p class="player"> {{ p }} </p> 
         </v-card>
       </v-col>
+        <v-card
+          class="pa-2 v-card-result"
+          outlined
+          tile
+          >
+          <p class="results">{{ resultColumn[0] }}</p>
+        </v-card>
+        <v-card
+          class="pa-2 v-card-result"
+          outlined
+          tile
+          >
+          <p class="results">{{ resultColumn[1] }}</p>
+        </v-card>
+        <v-card
+          class="pa-2 v-card-result"
+          outlined
+          tile
+          >
+          <p class="results">{{ resultColumn[2] }}</p>
+        </v-card>
+        <v-card
+          class="pa-2 v-card-result"
+          outlined
+          tile
+          >
+          <p class="results">{{ resultColumn[3] }}</p>
+        </v-card>
+        <v-card
+          class="pa-2 v-card-result"
+          outlined
+          tile
+          >
+          <p class="results">{{ resultColumn[4] }}</p>
+        </v-card>
     </v-row>
-    <!-- first line -->
+    <!-- p1 line -->
     <v-row
       no-gutters
       >
@@ -26,9 +60,8 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
-          p1
+            <p class="player">{{ playerName[1] }}</p>
         </v-card>
       </v-col>
       <v-col>
@@ -36,7 +69,9 @@
           class="pa-2"
           outlined
           tile
-          height="75">-</v-card>
+          >
+            <p class="hyphen">-</p>
+        </v-card>
       </v-col>
       <!-- testarea -->
       <v-col
@@ -45,12 +80,11 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
             v-model="p1p2"
+            height="90"
           >
           </v-textarea>
         </v-card>
@@ -61,11 +95,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p1p3"
           >
           </v-textarea>
@@ -77,67 +110,51 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p1p4"
           >
           </v-textarea>
         </v-card>
       </v-col>
       <!-- mutch point -->
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p1winround }}
+          <p class="points">{{ p1winround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p1loseround }}
+          <p class="points">{{ p1loseround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p1diff }}
+          <p class="points">{{ p1diff }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p1win }}
+          <p class="points">{{ p1win }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p1rank }}
+          <p class="points">{{ p1rank }}</p>
         </v-card>
-      </v-col>
     </v-row>
 
     <!-- second line -->
@@ -149,9 +166,8 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
-          p2
+          <p class="player">{{ playerName[2] }}</p>
         </v-card>
       </v-col>
       <v-col>
@@ -159,11 +175,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p2p1"
           >
           </v-textarea>
@@ -174,7 +189,9 @@
           class="pa-2"
           outlined
           tile
-          height="75">-</v-card>
+          >
+            <p class="hyphen">-</p>
+        </v-card>
       </v-col>
       <!-- testarea -->
       <v-col>
@@ -182,11 +199,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p2p3"
           >
           </v-textarea>
@@ -197,67 +213,51 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p2p4"
           >
           </v-textarea>
         </v-card>
       </v-col>
       <!-- mutch point -->
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p2winround }}
+          <p class="points">{{ p2winround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p2loseround }}
+          <p class="points">{{ p2loseround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p2diff }}
+          <p class="points">{{ p2diff }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p2win }}
+          <p class="points">{{ p2win }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p2rank }}
+          <p class="points">{{ p2rank }}</p>
         </v-card>
-      </v-col>
     </v-row>
 
     <!-- therd line -->
@@ -269,9 +269,8 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
-          p3
+         <p class="player">{{ playerName[3] }}</p>
         </v-card>
       </v-col>
       <!-- testarea -->
@@ -280,11 +279,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p3p1"
           >
           </v-textarea>
@@ -295,11 +293,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p3p2"
           >
           </v-textarea>
@@ -310,77 +307,63 @@
           class="pa-2"
           outlined
           tile
-          height="75">-</v-card>
+          >
+            <p class="hyphen">-</p>
+        </v-card>
       </v-col>
       <v-col>
         <v-card
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p3p4"
           >
           </v-textarea>
         </v-card>
       </v-col>
       <!-- mutch point -->
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p3winround }}
+          <p class="points">{{ p3winround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p3loseround }}
+          <p class="points">{{ p3loseround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p3diff }}
+          <p class="points">{{ p3diff }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p3win }}
+          <p class="points">{{ p3win }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p3rank }}
+          <p class="points">{{ p3rank }}</p>
         </v-card>
-      </v-col>
     </v-row>
 
-    <!-- forth line -->
+    <!-- p4 line -->
     <v-row
       no-gutters
       >
@@ -389,9 +372,8 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
-          p4
+          <p class="player">{{ playerName[4] }}</p>
         </v-card>
       </v-col>
       <!-- testarea -->
@@ -400,11 +382,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p4p1"
           >
           </v-textarea>
@@ -415,11 +396,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p4p2"
           >
           </v-textarea>
@@ -430,11 +410,10 @@
           class="pa-2"
           outlined
           tile
-          height="75"
           >
           <v-textarea
             outlined
-            rows="1"
+            height="90"
             v-model="p4p3"
           >
           </v-textarea>
@@ -445,62 +424,52 @@
           class="pa-2"
           outlined
           tile
-          height="75">-</v-card>
+          >
+            <p class="hyphen">-</p>
+        </v-card>
       </v-col>
       <!-- mutch point -->
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p4winround }}
+          <p class="points">{{ p4winround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p4loseround }}
+          <p class="points">{{ p4loseround }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p4diff }}
+          <p class="points">{{ p4diff }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p4win }}
+          <p class="points">{{ p4win }}</p>
         </v-card>
-      </v-col>
-      <v-col>
         <v-card
-          class="pa-2"
+          class="pa-2 v-card-result"
           outlined
           tile
-          height="75"
           >
-          {{ p4rank }}
+          <p class="points">{{ p4rank }}</p>
         </v-card>
-      </v-col>
     </v-row>
-    <v-btn @click=update>update</v-btn>
-    <v-btn @click=ranking>ranking</v-btn>
+    <div class="buttons">
+      <v-btn @click=update>update</v-btn>
+      <v-btn @click=ranking>ranking</v-btn>
+    </div>
+
   </v-container>
 </template>
 
@@ -508,7 +477,8 @@
 export default {
   data() {
     return {
-      firstLine: ["name", "p1", "p2", "p3", "p4", "WR", "LR", "diff", "勝数", "順位"],
+      playerName: ["", "伝説のオタク", "神園", "レン", "はやお"],
+      resultColumn: [ "WR", "LR", "得失点", "勝数", "順位"],
       p1p2: "",
       p1p3: "",
       p1p4: "",
@@ -544,9 +514,11 @@ export default {
     }
   },
   mounted() {
+    // TODO: 値をDBから読み取る
   },
   methods: {
     update() {
+      // TODO: 値を保存する処理の追加
       // 2先
       if (this.p1p2.match(/\n/) || this.p1p3.match(/\n/) || this.p1p4.match(/\n/) ||
       this.p2p1.match(/\n/) || this.p2p3.match(/\n/) || this.p2p4.match(/\n/) || 
@@ -801,4 +773,25 @@ export default {
 </script>
 
 <style>
+.v-card-result {
+  width: 50px;
+}
+.v-card {
+  height: 110px;
+}
+.player {
+  margin-top: 30px;
+}
+.results {
+  font-size: 20px;
+}
+.hyphen {
+  margin-top: 30px;
+}
+.buttons {
+  margin-top: 30px;
+}
+.points {
+  margin-top: 30px;
+}
 </style>
