@@ -468,6 +468,7 @@
     <div class="buttons">
       <v-btn @click=update>update</v-btn>
       <v-btn @click=ranking>ranking</v-btn>
+      <v-btn @click=reset class="red reset">reset</v-btn>
     </div>
 
   </v-container>
@@ -514,11 +515,31 @@ export default {
     }
   },
   mounted() {
-    // TODO: 値をDBから読み取る
+    const results = ["p1p2", "p1p3", "p1p4", "p2p1", "p2p3", "p2p4", "p3p1", "p3p2", "p3p4", "p4p1", "p4p2", "p4p3"]
+    results.forEach((key) => {
+      this.getResult(key)
+    })
   },
   methods: {
     update() {
       // TODO: 値を保存する処理の追加
+        const result  = {
+          "p1p2": this.p1p2,
+          "p1p3": this.p1p3,
+          "p1p4": this.p1p4,
+          "p2p1": this.p2p1,
+          "p2p3": this.p2p3,
+          "p2p4": this.p2p4,
+          "p3p1": this.p3p1,
+          "p3p2": this.p3p2,
+          "p3p4": this.p3p4,
+          "p4p1": this.p4p1,
+          "p4p2": this.p4p2,
+          "p4p3": this.p4p3
+        }
+      Object.keys(result).forEach((key) => {
+        this.saveResult(key, result[key])
+      })
       // 2先
       if (this.p1p2.match(/\n/) || this.p1p3.match(/\n/) || this.p1p4.match(/\n/) ||
       this.p2p1.match(/\n/) || this.p2p3.match(/\n/) || this.p2p4.match(/\n/) || 
@@ -767,6 +788,46 @@ export default {
           break;
           default:
         }
+    },
+    saveResult(key, value) {
+      localStorage.setItem(key, value);
+    },
+    getResult(key) {
+      const result = localStorage.getItem(key);
+      if (result) {
+        switch (key) {
+          case "p1p2":
+          this.p1p2 = result;
+          break;
+          case "p1p3":
+          this.p1p3 = result;
+          break;
+          case "p1p4":
+          this.p1p4 = result;
+          case "p2p1":
+          this.p2p1 = result;
+          case "p2p3":
+          this.p2p3 = result;
+          case "p2p4":
+          this.p2p4 = result;
+          case "p3p1":
+          this.p3p1 = result;
+          case "p3p2":
+          this.p3p2 = result;
+          case "p3p4":
+          this.p3p4 = result;
+          case "p4p1":
+          this.p4p1 = result;
+          case "p4p2":
+          this.p4p2 = result;
+          case "p4p3":
+          this.p4p3 = result;
+        }
+      }
+    },
+    reset() {
+      localStorage.clear()
+      Object.assign(this.$data, this.$options.data.call(this));
     }
   }
 }
@@ -789,9 +850,12 @@ export default {
   margin-top: 30px;
 }
 .buttons {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .points {
   margin-top: 30px;
+}
+.reset {
+  margin-left: 100px;
 }
 </style>
