@@ -3,21 +3,18 @@
     "name": "inspire",
     "path": "/inspire",
     "component": "/Users/kokamoto/dev/go/src/github.com/garireo2549/league/pages/inspire.vue",
-    "chunkName": "pages/inspire",
-    "_name": "_9413ef08"
+    "chunkName": "pages/inspire"
   },
   {
     "name": "league",
     "path": "/league",
     "component": "/Users/kokamoto/dev/go/src/github.com/garireo2549/league/pages/league.vue",
-    "chunkName": "pages/league",
-    "_name": "_60416806"
+    "chunkName": "pages/league"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/kokamoto/dev/go/src/github.com/garireo2549/league/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_a5950618"
+    "chunkName": "pages/index"
   }
 ]
